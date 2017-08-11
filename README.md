@@ -1,5 +1,7 @@
 # AdonisJs Website
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adonisjs/adonisjs.com.svg)](https://greenkeeper.io/)
+
 This repo contains the source code of the website.
 
 ## Setup
