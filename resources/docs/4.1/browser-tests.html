@@ -7,7 +7,6 @@
 <li><a href="#_basic_example">Basic Example</a></li>
 <li><a href="#_custom_chromium_path">Custom Chromium path</a></li>
 <li><a href="#_configuration">Configuration</a></li>
-<li><a href="#_browser_api">Browser API</a></li>
 <li><a href="#_page_interactions">Page interactions</a></li>
 <li><a href="#_waiting_for_actions">Waiting for actions</a></li>
 <li><a href="#_reading_values">Reading values</a></li>
@@ -211,44 +210,6 @@ test('Visit home page', async ({ browser }) =&gt; {
 </table>
 <div class="paragraph">
 <p>For all other options, do check <a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions">puppeteer.launch</a> official documentation.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_browser_api"><a class="anchor" href="#_browser_api"></a><a class="link" href="#_browser_api">Browser API</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>AdonisJs adds a wrapper on top of Puppeteer to make it more suitable for testing. The following is the API for the main browser and page objects.</p>
-</div>
-<div class="sect3">
-<h4 id="_browser_visit"><a class="anchor" href="#_browser_visit"></a><a class="link" href="#_browser_visit">browser.visit</a></h4>
-<div class="paragraph">
-<p>The <code>browser.visit</code> method calls <a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.8.0&amp;show=api-pagegotourl-options">page.goto</a> method of Puppeteer and has the same signature.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-js" data-lang="js">test('Visit home page', async ({ browser }) =&gt; {
-  const page = await browser.visit('/', {
-    waitUntil: 'load'
-  })
-
-  await page.assertHas('Adonis')
-})</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can access the actual page object of Puppeteer by accessing the <code>page.page</code> property.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-js" data-lang="js">test('Visit home page', async ({ browser }) =&gt; {
-  const page = await browser.visit('/')
-
-  // puppeteer page object
-  page.page.addScriptTag()
-})</code></pre>
-</div>
 </div>
 </div>
 </div>

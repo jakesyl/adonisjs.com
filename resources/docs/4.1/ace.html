@@ -28,7 +28,7 @@
 <p>Every AdonisJs project has an <code>ace</code> file in the project root, which is a regular Javascript file but without the <code>.js</code> extension.</p>
 </div>
 <div class="paragraph">
-<p>The <code>ace</code> file is used to execute project-specific commands, and for reusable commands, you must bundle them as npm packages.</p>
+<p>The <code>ace</code> file is used to execute project specific commands, and for reusable commands, you must bundle them as npm packages.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s run the following code to see the list of available commands.</p>
@@ -160,7 +160,7 @@ module.exports = Quote</code></pre>
 <h2 id="_command_signature"><a class="anchor" href="#_command_signature"></a><a class="link" href="#_command_signature">Command signature</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The command signature defines the command name, required/optional options, and flags. The signature is defined as an expression string.</p>
+<p>The command signature defines the command name, required/optional options and flags. The signature is defined as an expression string.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -199,7 +199,7 @@ module.exports = Quote</code></pre>
 <div class="sect3">
 <h4 id="_optional_arguments"><a class="anchor" href="#_optional_arguments"></a><a class="link" href="#_optional_arguments">Optional arguments</a></h4>
 <div class="paragraph">
-<p>The arguments can be optional by appending <code>?</code> to the name.</p>
+<p>The arguments can be optional by passing <code>?</code> to the name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -373,7 +373,7 @@ All <strong>arguments</strong> and <strong>flags</strong> are passed in camel ca
 </div>
 </div>
 <div class="paragraph">
-<p>Also, you can pass an array of preselected values.</p>
+<p>Also, you can pass an array of pre selected values</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -402,7 +402,7 @@ All <strong>arguments</strong> and <strong>flags</strong> are passed in camel ca
 </div>
 </div>
 <div class="paragraph">
-<p>Also can also be an object.</p>
+<p>Also can also be an object</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -420,7 +420,7 @@ All <strong>arguments</strong> and <strong>flags</strong> are passed in camel ca
 </div>
 </div>
 <div class="paragraph">
-<p>Also, you can pre-select one of the available options.</p>
+<p>Also, you can pre select one of the available options.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -456,7 +456,7 @@ All <strong>arguments</strong> and <strong>flags</strong> are passed in camel ca
 <h2 id="_colorful_logs"><a class="anchor" href="#_colorful_logs"></a><a class="link" href="#_colorful_logs">Colorful logs</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ace uses <a href="https://npmjs.org/package/kleur" target="_blank" rel="noopener">kleur</a> to colorful output messages on the terminal, you can access the instance of kleur as <code>this.chalk</code>.</p>
+<p>Ace uses <a href="https://npmjs.org/package/chalk" target="_blank" rel="noopener">chalk</a> to output colorful messages on the terminal, you can access the instance of chalk as <code>this.chalk</code>.</p>
 </div>
 <div class="paragraph">
 <p>Also, there are some helper methods to log consistently styled messages.</p>
@@ -738,7 +738,7 @@ class Quote extends Command {
     let quote = await Quote.query().orderByRaw('rand()').first()
     console.log(quote.content)
 
-    // This is the crucial line. Without it, the command runner will not exit.
+    // This is the important line. Without it, the command runner will not exit.
     Database.close()
   }
 }</code></pre>

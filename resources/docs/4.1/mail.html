@@ -137,9 +137,6 @@ module.exports = UserController</code></pre>
 <div class="paragraph">
 <p>The view ending with <code>.text</code> is used as the plain text body of the email. In the same way, you can set the mail body for Apple watch.</p>
 </div>
-<div class="paragraph">
-<p>If you&#8217;re using edge as the template engine, you can also use <code>-text</code> instead of <code>.text</code> as the plain text body template suffix.</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight line-numbers"><code class="language-js" data-lang="js">await Mail.send(['welcome', 'welcome.text', 'welcome.watch'])</code></pre>
@@ -229,7 +226,7 @@ message.bcc(user.email, user.name)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Also, you can call the above methods for multiple times to defined various addresses.</p>
+<p>Also, you can call the above methods for multiple times to defined multiple addresses.</p>
 </div>
 </div>
 <div class="sect3">
@@ -403,7 +400,7 @@ message.attachData(fs.createReadStream('hello.txt'), 'hello.txt')</code></pre>
 <div class="sect2">
 <h3 id="_sparkpost"><a class="anchor" href="#_sparkpost"></a><a class="link" href="#_sparkpost">SparkPost</a></h3>
 <div class="paragraph">
-<p>You can pass the following extra options when using sparkpost as the driver.</p>
+<p>You can pass following extra options when using sparkpost as the driver.</p>
 </div>
 <div class="paragraph">
 <p>Via config</p>
@@ -438,7 +435,7 @@ message.attachData(fs.createReadStream('hello.txt'), 'hello.txt')</code></pre>
 <div class="sect2">
 <h3 id="_mailgun"><a class="anchor" href="#_mailgun"></a><a class="link" href="#_mailgun">Mailgun</a></h3>
 <div class="paragraph">
-<p>You can pass the following extra options when using mailgun as the driver.</p>
+<p>You can pass following extra options when using mailgun as the driver.</p>
 </div>
 <div class="paragraph">
 <p>Via config</p>

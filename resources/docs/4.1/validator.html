@@ -12,7 +12,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>AdonisJs makes it so simple to validate the user&#8217;s input with the help of a dedicated validation provider. In this guide you learn how to verify the data <strong>manually</strong> or via <strong>route validators</strong>.</p>
+<p>AdonisJs makes it so simple to validate the user&#8217;s input with the help of dedicated validation provider. In this guide you learn how to validate the data <strong>manually</strong> or via <strong>route validators</strong>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -32,7 +32,7 @@ Adonisjs validator using <a href="http://indicative.adonisjs.com/">indicative</a
 <h2 id="_setup"><a class="anchor" href="#_setup"></a><a class="link" href="#_setup">Setup</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Follow the below instructions to set up the validation provider.</p>
+<p>Follow the below instructions to setup the validation provider.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -121,7 +121,7 @@ module.exports = UserController</code></pre>
 <p>First, we have defined the <code>rules</code> schema.</p>
 </li>
 <li>
-<p>Next, we make use of the <code>validate</code> method to validate the request data with our established rules.</p>
+<p>Next, we make use of the <code>validate</code> method to validate the request data with our defined rules.</p>
 </li>
 <li>
 <p>If validation fails, we flash all the errors and redirect the user back to the form.</p>
@@ -268,7 +268,7 @@ Route
 </div>
 </div>
 <div class="paragraph">
-<p>All we need to do is, define the rules on the validator.</p>
+<p>All we need to do is, define the rules on the validator</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -290,40 +290,7 @@ module.exports = StoreUser</code></pre>
 <p>That is all! If the validation fails, the validator automatically set the errors as flash messages and redirects the user to the form.</p>
 </div>
 <div class="paragraph">
-<p>Whereas, it sends back the JSON response if the request has <code>Accept: application/json</code> header set.</p>
-</div>
-<div class="sect2">
-<h3 id="_custom_error_messages"><a class="anchor" href="#_custom_error_messages"></a><a class="link" href="#_custom_error_messages">Custom error messages</a></h3>
-<div class="paragraph">
-<p>Default error messages can be confusing for the end user so you might want to create your custom validation error messages.
-Adonis provides you an effortless way to do this.
-You have to declare a <code>messages</code> method on your route validator and return an object with your messages per rule like so:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-js" data-lang="js">'use strict'
-
-class StoreUser {
-  get rules () {
-    return {
-      email: 'required|email|unique:users',
-      password: 'required'
-    }
-  }
-
-  get messages () {
-    return {
-      'email.required': 'You must provide a email address.',
-      'email.email': 'You must provide a valid email address.',
-      'email.unique': 'This email is already registered.',
-      'password.required': 'You must provide a password'
-    }
-  }
-}
-
-module.exports = StoreUser</code></pre>
-</div>
-</div>
+<p>Whereas, it sends back the JSON response if request has <code>Accept: application/json</code> header set.</p>
 </div>
 <div class="sect2">
 <h3 id="_validate_all"><a class="anchor" href="#_validate_all"></a><a class="link" href="#_validate_all">Validate All</a></h3>
@@ -384,7 +351,7 @@ module.exports = StoreUser</code></pre>
 <div class="sect2">
 <h3 id="_custom_data_object"><a class="anchor" href="#_custom_data_object"></a><a class="link" href="#_custom_data_object">Custom data object</a></h3>
 <div class="paragraph">
-<p>At times you want to validate custom properties, which are not part of the request body. For example, validating some headers. Same can be done by defining <code>data</code> property on the validator instance.</p>
+<p>At times you want to validate custom properties, which are not part of request body. For example validating some headers. Same can be done by defining <code>data</code> property on the validator instance.</p>
 </div>
 <div class="listingblock">
 <div class="content">

@@ -5,7 +5,6 @@
 <ul class="sectlevel1">
 <li><a href="#_setup">Setup</a></li>
 <li><a href="#_locales_storage">Locales storage</a></li>
-<li><a href="#_accessing_locales">Accessing Locales</a></li>
 <li><a href="#_icu_message_syntax">ICU Message syntax</a></li>
 <li><a href="#_formatting_values">Formatting values</a></li>
 <li><a href="#_registering_formats">Registering formats</a></li>
@@ -91,7 +90,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>You can also create a directory named <code>fallback</code> to store messages which are used when the message for the current language is missing.</p>
+<p>You can also create a directory named <code>fallback</code> to store messages which are used when the message for current language is missing.</p>
 </div>
 </div>
 <div class="sect2">
@@ -147,24 +146,6 @@ It is mandatory to define a <code>group</code> for each locale item.
 </td>
 </tr>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_accessing_locales"><a class="anchor" href="#_accessing_locales"></a><a class="link" href="#_accessing_locales">Accessing Locales</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can access the current and default locale from the <code>Antl</code> object</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-js" data-lang="js">Antl.currentLocale()</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-js" data-lang="js">Antl.defaultLocale()</code></pre>
 </div>
 </div>
 </div>
@@ -251,7 +232,7 @@ Antl.formatMessage(
 </div>
 </div>
 <div class="paragraph">
-<p>All we are doing here is calling <code>formatMessage</code> with three arguments.</p>
+<p>All we are doing here is calling <code>formatMessage</code> with 3 arguments.</p>
 </div>
 <div class="olist ol-shrinked">
 <ol class="ol-shrinked">
@@ -262,7 +243,7 @@ Antl.formatMessage(
 <p>Next the <code>data</code> to be passed</p>
 </li>
 <li>
-<p>Finally, we give an <strong>Array</strong> of formats.</p>
+<p>Finally, we pass an <strong>Array</strong> of formats.</p>
 </li>
 </ol>
 </div>
@@ -462,7 +443,7 @@ Formats.add('usd', {
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Formats.pass</code> takes two arguments.</p>
+<p>The <code>Formats.pass</code> takes 2 arguments.</p>
 </div>
 <div class="olist ol-shrinked">
 <ol class="ol-shrinked">

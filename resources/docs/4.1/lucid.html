@@ -28,7 +28,7 @@
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The reason behind using Models over writing plain database queries is the ease of use and the powerful API to drive the data flow. Lucid models under the hood take care of</p>
+<p>The reason behind using Models over writing plain database queries is the ease of use and the powerful API to drive the data flow. Lucid models under the hood takes care of</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -263,7 +263,7 @@ await user.save()</code></pre>
 <div class="sect3">
 <h4 id="_incrementing"><a class="anchor" href="#_incrementing"></a><a class="link" href="#_incrementing">incrementing</a></h4>
 <div class="paragraph">
-<p>Lucid assumes that each table associated with a Model has an auto-incrementing primary key. You can disable this flag by return <code>false</code> from the incrementing getter.</p>
+<p>Lucid assumes that each table associated with a Model has an auto incrementing primary key. You can disable this flag by return <code>false</code> from the incrementing getter.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -551,7 +551,7 @@ await User.firstOrFail()</code></pre>
 <div class="sect3">
 <h4 id="_findorcreate_whereattributes_values"><a class="anchor" href="#_findorcreate_whereattributes_values"></a><a class="link" href="#_findorcreate_whereattributes_values">findOrCreate (whereAttributes, values)</a></h4>
 <div class="paragraph">
-<p>Find a record, if not found a new record will be created and returned on the fly.</p>
+<p>Find a record, if not found a new record will be created and returned back on the fly.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -652,7 +652,7 @@ const users = await User.truncate()</code></pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-These methods end the query builder chaining and return a value. There is no need to call <code><a href="#_query_builder">fetch()</a></code>.
+These methods end the query builder chaining and returns a value. There is no need to call <code><a href="#_query_builder">fetch()</a></code>.
 </td>
 </tr>
 </table>
@@ -760,7 +760,7 @@ return view.render('users', { users: users.toJSON() })</code></pre>
   perPage: '',
   lastPage: '',
   page: '',
-  data: [{...}]
+  data: []
 }</code></pre>
 </div>
 </div>
@@ -862,7 +862,7 @@ const user = await User.create(userData)</code></pre>
 <div class="sect3">
 <h4 id="_createmany"><a class="anchor" href="#_createmany"></a><a class="link" href="#_createmany">createMany</a></h4>
 <div class="paragraph">
-<p>Just like <code>create</code> you can persist multiple instances of a model at the same time using the createMany method.</p>
+<p>Just like <code>create</code> you can persist multiple instances of a model using the createMany method.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -984,9 +984,7 @@ trx.commit()</code></pre>
 await User.create({ username: 'virk' }, trx)
 
 // once done commit the transaction
-await trx.commit()
-// or rollback the transaction
-await trx.rollback()</code></pre>
+trx.commit()</code></pre>
 </div>
 </div>
 <div class="listingblock">

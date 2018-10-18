@@ -14,7 +14,6 @@
 <li><a href="#_personal_api_tokens">Personal API tokens</a></li>
 <li><a href="#_switching_authenticators">Switching authenticators</a></li>
 <li><a href="#_auth_middleware">Auth middleware</a></li>
-<li><a href="#_guest_middleware">Guest middleware</a></li>
 <li><a href="#_helpers">Helpers</a></li>
 <li><a href="#_revoking_tokens">Revoking tokens</a></li>
 <li><a href="#_tokens_encryption">Tokens encryption</a></li>
@@ -77,7 +76,7 @@
 <p>Authentication is divided into two broad categories of <strong>Stateful authentication</strong> and <strong>Stateless authentication</strong>.</p>
 </li>
 <li>
-<p>Session-based authentication is considered <strong>Stateful Authentication</strong> since once logged in the user can navigate to different areas of the application without resending the credentials.</p>
+<p>Session based authentication is considered <strong>Stateful Authentication</strong> since once logged in the user can navigate to different areas of the application without resending the credentials.</p>
 </li>
 <li>
 <p><strong>Stateless Authentication</strong> requires the end-user to send the credentials on each HTTP request which is very common with REST API&#8217;s.</p>
@@ -128,8 +127,7 @@
 ]
 
 const namedMiddleware = {
-  auth: 'Adonis/Middleware/Auth',
-  guest: 'Adonis/Middleware/AllowGuestOnly'
+  auth: 'Adonis/Middleware/Auth'
 }</code></pre>
 </div>
 </div>
@@ -183,7 +181,7 @@ const namedMiddleware = {
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uid</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Database field name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Database field to be used as a unique identifier for a given user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Database field to be used as unique identifier for a given user.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">password</p></td>
@@ -193,7 +191,7 @@ const namedMiddleware = {
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">model</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Model Namespace <strong>(Lucid Only)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Applicable only when using Lucid serializer. Given the model is used for querying the database.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Applicable only when using Lucid serializer. Given model is used for querying the database.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
@@ -216,9 +214,7 @@ const namedMiddleware = {
   .get('users/:id', 'UserController.show')
   .middleware('auth')
 
-Route
-  .post('login', 'UserController.login')
-  .middleware('guest')</code></pre>
+Route.post('login', 'UserController.login')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -789,32 +785,6 @@ const auth
 </div>
 </div>
 <div class="sect1">
-<h2 id="_guest_middleware"><a class="anchor" href="#_guest_middleware"></a><a class="link" href="#_guest_middleware">Guest middleware</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The <code>guest</code> middleware verify that you are not authenticated. The middleware is registered as a name middleware inside <code>start/kernel.js</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-javascript" data-lang="javascript">const namedMiddleware = {
-  guest: 'Adonis/Middleware/AllowGuestOnly'
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Usage</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight line-numbers"><code class="language-javascript" data-lang="javascript">// We don't want our logged-in user to access this view
-Route
-  .get('login', 'AuthController.login')
-  .middleware(['guest'])</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_helpers"><a class="anchor" href="#_helpers"></a><a class="link" href="#_helpers">Helpers</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -852,7 +822,7 @@ Route
 <h2 id="_revoking_tokens"><a class="anchor" href="#_revoking_tokens"></a><a class="link" href="#_revoking_tokens">Revoking tokens</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>jwt</code> and <code>api</code> schemes expose methods to revoke tokens using the <code>auth</code> interface.</p>
+<p>The <code>jwt</code> and <code>api</code> schemes exposes methods to revoke tokens using the <code>auth</code> interface.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -876,7 +846,7 @@ For jwt scheme only refresh tokens are revoked, since actual tokens are never sa
 <pre class="highlight line-numbers"><code class="language-js" data-lang="js">const refreshToken = '' // get it from user
 
 await auth
-  .authenticator('jwt')
+  .scheme('jwt')
   .revokeTokens([refreshToken])</code></pre>
 </div>
 </div>
@@ -888,7 +858,7 @@ await auth
 <pre class="highlight line-numbers"><code class="language-js" data-lang="js">const refreshToken = '' // get it from user
 
 await auth
-  .authenticator('jwt')
+  .scheme('jwt')
   .revokeTokens([refreshToken], true)</code></pre>
 </div>
 </div>
@@ -898,7 +868,7 @@ await auth
 <div class="listingblock">
 <div class="content">
 <pre class="highlight line-numbers"><code class="language-js" data-lang="js">await auth
-  .authenticator('jwt')
+  .scheme('jwt')
   .revokeTokens()</code></pre>
 </div>
 </div>
@@ -911,7 +881,7 @@ await auth
 const apiToken = auth.getAuthHeader()
 
 await auth
-  .authenticator('api')
+  .scheme('api')
   .revokeTokens([apiToken])</code></pre>
 </div>
 </div>
@@ -926,7 +896,7 @@ await auth
 <pre class="highlight line-numbers"><code class="language-js" data-lang="js">const user = await User.find(1)
 
 await auth
-  .authenticator('jwt')
+  .scheme('jwt')
   .revokeTokensForUser(user)</code></pre>
 </div>
 </div>
